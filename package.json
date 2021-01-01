@@ -16,7 +16,11 @@
     "npm": ">=3.10.8"
   },
   "devDependencies": {
-    "mocha": "^6.2.0",
-    "chai": "^4.2.0"
+    "chai": "^4.2.0",
+    "eslint": "^7.16.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-unicorn": "^25.0.1",
+    "mocha": "^6.2.0"
   }
 }

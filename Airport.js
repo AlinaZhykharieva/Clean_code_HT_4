@@ -1,15 +1,17 @@
 const PassengerPlane = require('./Planes/PassengerPlane');
 const MilitaryPlane = require('./Planes/MilitaryPlane');
 const MilitaryType = require('./models/militaryType');
-const experimentalPlane = require('./Planes/experimentalPlane');
+const experimentalPlane = require('./Planes/ExperimentalPlane');
 
 class Airport {
 
-     getPasPl() {
+    getPasPl() {
         let pl = this.planes;
-        var x = [];
+        let x = [];
         for (let p of this.planes) {
-            if (p instanceof PassengerPlane) {x.push(p);}
+            if (p instanceof PassengerPlane) {
+                x.push(p);
+            }
         }
         return x;
     }
@@ -17,13 +19,10 @@ class Airport {
     getMilitaryPlanes() {
         let militaryPlanes = [];
         this.planes.forEach(plane => {
-            if (plane instanceof MilitaryPlane) {//if
+            if (plane instanceof MilitaryPlane) {
                 militaryPlanes.push(plane);
             }
-            //else
-            else{}
         });
-//return
         return militaryPlanes;
     }
 
@@ -31,7 +30,7 @@ class Airport {
         let passengerPlanes = this.getPasPl();
         let planeWithMaxCapacity = passengerPlanes[0];
         for (let i = 0; i < passengerPlanes.length; i++) {
-            if (passengerPlanes[i].getPassengersCapacity() >     planeWithMaxCapacity.getPassengersCapacity()) {
+            if (passengerPlanes[i].getPassengersCapacity() > planeWithMaxCapacity.getPassengersCapacity()) {
                 planeWithMaxCapacity = passengerPlanes[i];
             }
         }
@@ -39,29 +38,23 @@ class Airport {
     }
 
 
-
-
-
-
-
-    getTransportMilitaryPlanes(){
+    getTransportMilitaryPlanes() {
         let transportMilitaryPlanes = [];
         let militaryPlanes = this.getMilitaryPlanes();
         for (let i = 0; i < militaryPlanes.length; i++) {
-        if (militaryPlanes[i].getMilitaryType() == MilitaryType.TYPE_TRANSPORT) {
-        transportMilitaryPlanes.push(militaryPlanes[i]);
-        }
+            if (militaryPlanes[i].getMilitaryType() == MilitaryType.TRANSPORT) {
+                transportMilitaryPlanes.push(militaryPlanes[i]);
+            }
         }
         return transportMilitaryPlanes;
     }
 
 
-    getBomberMilitaryPlanes()
-    {
+    getBomberMilitaryPlanes() {
         let bomberMilitaryPlanes = [];
         let militaryPlanes = this.getMilitaryPlanes();
         for (let i = 0; i < militaryPlanes.length; i++) {
-            if (militaryPlanes[i].getMilitaryType()=== MilitaryType.BOMBER) {
+            if (militaryPlanes[i].getMilitaryType() === MilitaryType.BOMBER) {
                 bomberMilitaryPlanes.push(militaryPlanes[i]);
             }
         }
@@ -74,16 +67,15 @@ class Airport {
 
 
     getExperimentalPlanes() {
-        let experimentalPlanes  = [];
+        let experimentalPlanes = [];
         this.planes.forEach(plane => {
-            if (plane instanceof experimentalPlane) {//if
+            if (plane instanceof experimentalPlane) {
                 experimentalPlanes.push(plane);
             }
         });
-//return
+
         return experimentalPlanes;
     }
-
 
 
     sortByMaxDistance() {
@@ -91,10 +83,6 @@ class Airport {
         return this;
     }
 
-    /**
-     * Sorts by max speed
-     * @return Airport
-     */
     sortByMaxSpeed() {
         this.planes.sort((a, b) => (a.getMS() > b.getMS()) ? 1 : -1);
         return this;
@@ -108,9 +96,6 @@ class Airport {
     getPlanes() {
         return this.planes;
     }
-
-
-
 
     static print(planes) {
         return JSON.stringify(planes);
