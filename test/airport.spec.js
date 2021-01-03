@@ -1,4 +1,4 @@
-const assert = require('chai').assert;
+const expect = require('chai').expect;
 
 const MilitaryPlane = require('../Planes/MilitaryPlane');
 const PassengerPlane = require('../Planes/PassengerPlane');
@@ -30,42 +30,28 @@ describe('My Test', () => {
     ];
     let planeWithMaxPassengerCapacity = new PassengerPlane('Boeing-747', 980, 16100, 70500, 242);
 
-    it('should have military Planes with transport type', () => {
+    it('check that airport has military Planes with transport type', () => {
         let airport = new Airport(planes);
         let transportMilitaryPlanes = airport.getTransportMilitaryPlanes();
-        let flag = false;
         for (let militaryPlane of transportMilitaryPlanes) {
-            if (militaryPlane.getMilitaryType() === MilitaryType.TRANSPORT) {
-                flag = true;
-                break;
-            }
+            expect(militaryPlane.getMilitaryType()).to.deep.equal(MilitaryType.TRANSPORT);
         }
-        assert.equal(flag, true);
     });
 
-    it('should check passenger plane with max capacity', () => {
+    it('check that passenger plane has max capacity', () => {
         let airport = new Airport(planes);
         let expectedPlaneWithMaxPassengersCapacity = airport.getPassengerPlaneWithMaxPassengersCapacity();
-        assert.equal(expectedPlaneWithMaxPassengersCapacity, planeWithMaxPassengerCapacity);
+        expect(expectedPlaneWithMaxPassengersCapacity).to.deep.equal(planeWithMaxPassengerCapacity);
     });
 
 
-    it('test 3', () => {
-        console.log("TEST testGetPassengerPlaneWithMaxCapacity started!");
+    it('check that planes sorted by max load capacity from low to height', () => {
         let airport = new Airport(planes);
         airport.sortByMaxLoadCapacity();
-        let planesSortedByMaxLoadCapacity = airport.getPlanes();
-        let nextPlaneMaxLoadCapacityIsHigherThanCurrent = true;
-        for (let i = 0; i < planesSortedByMaxLoadCapacity.length - 1; i++) {
-            let currentPlane = planesSortedByMaxLoadCapacity[i];
-            let nextPlane = planesSortedByMaxLoadCapacity[i + 1];
-            if (currentPlane.getMinLoadCapacity() > nextPlane.getMinLoadCapacity()) {
-                nextPlaneMaxLoadCapacityIsHigherThanCurrent = false;
-                break;
-            }
-        }
-        assert.isTrue(nextPlaneMaxLoadCapacityIsHigherThanCurrent);
-    })
+        for (let i = 0; i < airport.getPlanes() - 1; i++) {
+            expect(airport.getPlanes()[i] > airport.getPlanes()[i + 1]).to.be.false;
+        };
+    });
 
     it('testHasAtLeastOneBomberInMilitaryPlanes', () => {
         let airport = new Airport(planes);

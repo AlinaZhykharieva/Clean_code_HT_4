@@ -5,8 +5,7 @@ const experimentalPlane = require('./Planes/ExperimentalPlane');
 
 class Airport {
 
-    getPasPl() {
-        let pl = this.planes;
+    getPassengerPlanes() {
         let x = [];
         for (let p of this.planes) {
             if (p instanceof PassengerPlane) {
@@ -27,7 +26,7 @@ class Airport {
     }
 
     getPassengerPlaneWithMaxPassengersCapacity() {
-        let passengerPlanes = this.getPasPl();
+        let passengerPlanes = this.getPassengerPlanes();
         let planeWithMaxCapacity = passengerPlanes[0];
         for (let i = 0; i < passengerPlanes.length; i++) {
             if (passengerPlanes[i].getPassengersCapacity() > planeWithMaxCapacity.getPassengersCapacity()) {
@@ -42,7 +41,7 @@ class Airport {
         let transportMilitaryPlanes = [];
         let militaryPlanes = this.getMilitaryPlanes();
         for (let i = 0; i < militaryPlanes.length; i++) {
-            if (militaryPlanes[i].getMilitaryType() == MilitaryType.TRANSPORT) {
+            if (militaryPlanes[i].getMilitaryType() === MilitaryType.TRANSPORT) {
                 transportMilitaryPlanes.push(militaryPlanes[i]);
             }
         }
