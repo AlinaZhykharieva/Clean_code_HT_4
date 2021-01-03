@@ -1,5 +1,4 @@
 const expect = require('chai').expect;
-
 const MilitaryPlane = require('../Planes/MilitaryPlane');
 const PassengerPlane = require('../Planes/PassengerPlane');
 const Airport = require('../Airport');
@@ -7,9 +6,15 @@ const MilitaryType = require('../models/MilitaryType');
 const experimentalPlane = require('../Planes/ExperimentalPlane');
 const ExperimentalTypes = require('../models/experimentalType');
 const ClassificationLevel = require('../models/ClassificationLevel');
+const MilitaryPlanesValidator = require('../validators/militaryPlanesValidator');
+const AirportValidator = require('../validators/airportValidators');
+const ExperimentalPlanesValidator = require('../validators/experimentalPlanesValidator');
 
-describe('My Test', () => {
+describe('Test planes that located in airport', () => {
 
+    let airportValidator = new AirportValidator();
+    let militaryPlanesValidator = new MilitaryPlanesValidator();
+    let experimentalPlanesValidator = new ExperimentalPlanesValidator();
     let planes = [
         new PassengerPlane('Boeing-737', 900, 12000, 60500, 164),
         new PassengerPlane('Boeing-737-800', 940, 12300, 63870, 192),
@@ -32,53 +37,28 @@ describe('My Test', () => {
 
     it('check that airport has military Planes with transport type', () => {
         let airport = new Airport(planes);
-        let transportMilitaryPlanes = airport.getTransportMilitaryPlanes();
-        for (let militaryPlane of transportMilitaryPlanes) {
-            expect(militaryPlane.getMilitaryType()).to.deep.equal(MilitaryType.TRANSPORT);
-        }
+        militaryPlanesValidator.validateThatMilitaryPlanesHaveTransportType(airport);
     });
 
     it('check that passenger plane has max capacity', () => {
         let airport = new Airport(planes);
-        let expectedPlaneWithMaxPassengersCapacity = airport.getPassengerPlaneWithMaxPassengersCapacity();
-        expect(expectedPlaneWithMaxPassengersCapacity).to.deep.equal(planeWithMaxPassengerCapacity);
+        expect(airport.getPassengerPlaneWithMaxPassengersCapacity()).to.deep.equal(planeWithMaxPassengerCapacity);
     });
-
 
     it('check that planes sorted by max load capacity from low to height', () => {
         let airport = new Airport(planes);
         airport.sortByMaxLoadCapacity();
-        for (let i = 0; i < airport.getPlanes() - 1; i++) {
-            expect(airport.getPlanes()[i] > airport.getPlanes()[i + 1]).to.be.false;
-        };
+        airportValidator.validateSortingByMaxLoadCapacityFromLowToHeight(airport);
     });
 
-    it('testHasAtLeastOneBomberInMilitaryPlanes', () => {
+    it('Check that military planes have at least one bomber in military planes', () => {
         let airport = new Airport(planes);
-        let bomberMilitaryPlanes = airport.getBomberMilitaryPlanes();
-        let flag = false;
-        for (let militaryPlane of bomberMilitaryPlanes) {
-            if (militaryPlane.getMilitaryType() === MilitaryType.BOMBER) {
-                flag = true;
-            } else {
-                assert.fail("Test failed!");
-            }
-        }
-
-    })
+        militaryPlanesValidator.validateThatBomberTypeExist(airport);
+    });
 
     it('should check that experimental planes has classification level higher than unclassified', () => {
         let airport = new Airport(planes);
-        let bomberMilitaryPlanes = airport.getExperimentalPlanes();
-        let hasUnclassifiedPlanes = false;
-        for (let experimentalPlane of bomberMilitaryPlanes) {
-            if (experimentalPlane.classificationLevel === ClassificationLevel.UNCLASSIFIED) {
-                hasUnclassifiedPlanes = true;
-
-            }
-            assert.isFalse(hasUnclassifiedPlanes);
-
-        }
+        experimentalPlanesValidator.validateThatAllExperimentalPlanesAreClassified(airport);
     });
 
 });
