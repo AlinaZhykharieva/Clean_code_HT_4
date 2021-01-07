@@ -1,0 +1,30 @@
+{
+    "env": {
+    "browser": true,
+        "es6": true,
+        "node": true
+},
+    "globals": {
+    "$": false
+},
+    "plugins": [
+    "unicorn"
+],
+    "extends": [
+    "airbnb-base"
+],
+    "rules": {
+    "indent": ["error", 4],
+        "max-len": ["error", 120, 4, {
+        "ignoreUrls": true,
+        "ignoreComments": false,
+        "ignoreRegExpLiterals": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true
+    }],
+        "no-param-reassign": ["error", { "props": false }],
+        "no-underscore-dangle": ["error", { "allow": ["_ddm", "_chatq"] }],
+        "unicorn/filename-case": ["error", { "case": "kebabCase"  }]
+}
+}
+

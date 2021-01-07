@@ -1,4 +1,4 @@
-const expect = require('chai').expect;
+const { expect } = require('chai');
 
 class airportValidators {
     validateSortingByMaxLoadCapacityFromLowToHeight(airport) {
@@ -8,4 +8,4 @@ class airportValidators {
     }
 }
 
-module.exports = airportValidators
+module.exports = airportValidators;
