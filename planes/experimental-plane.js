@@ -5,14 +5,6 @@ class experimentalPlane extends Plane {
         super(model, maxSpeed, maxFlightDistance, maxLoadCapacity);
         this.classificationLevel = classificationLevel;
     }
-
-    get classificationLevel() {
-        return this.classificationLevel;
-    }
-
-    set classificationLevel(value) {
-        this.classificationLevel = value;
-    }
 }
 
 module.exports = experimentalPlane;
