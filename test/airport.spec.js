@@ -14,6 +14,7 @@ describe('Test planes that located in airport', () => {
     const airportValidator = new AirportValidator();
     const militaryPlanesValidator = new MilitaryPlanesValidator();
     const experimentalPlanesValidator = new ExperimentalPlanesValidator();
+    const planeWithMaxPassengerCapacity = new PassengerPlane('Boeing-747', 980, 16100, 70500, 242);
     const planes = [
         new PassengerPlane('Boeing-737', 900, 12000, 60500, 164),
         new PassengerPlane('Boeing-737-800', 940, 12300, 63870, 192),
@@ -32,8 +33,6 @@ describe('Test planes that located in airport', () => {
         new ExperimentalPlane('Bell X-14', 277, 482, 500, ExperimentalTypes.HIGH_ALTITUDE, ClassificationLevel.SECRET),
         new ExperimentalPlane('Ryan X-13 Vertijet', 560, 307, 500, ExperimentalTypes.VTOL, ClassificationLevel.TOP_SECRET),
     ];
-    const planeWithMaxPassengerCapacity = new PassengerPlane('Boeing-747', 980, 16100, 70500, 242);
-
     it('check that airport has military planes with transport type', () => {
         const airport = new Airport(planes);
         militaryPlanesValidator.validateThatMilitaryPlanesHaveTransportType(airport);
