@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const ClassificationLevel = require('../models/classification-level');
+const ClassificationLevel = require('../types/classification-type');
 
 class experimentalPlanesValidator {
     validateThatAllExperimentalPlanesAreClassified(airport) {

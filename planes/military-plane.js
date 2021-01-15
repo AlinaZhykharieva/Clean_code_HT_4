@@ -6,7 +6,7 @@ class MilitaryPlane extends Plane {
         this.militaryType = militaryType;
     }
 
-    getMilitaryType() {
+    get MilitaryType() {
         return this.militaryType;
     }
 }
