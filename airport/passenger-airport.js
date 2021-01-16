@@ -6,25 +6,9 @@ class PassengerAirport extends Airport {
         super(planes);
     }
 
-    get PassengerPlanes() {
-        const passengerPlanes = [];
-        for (const plane of this.planes) {
-            if (plane instanceof PassengerPlane) {
-                passengerPlanes.push(plane);
-            }
-        }
-        return passengerPlanes;
-    }
-
     get PassengerPlaneWithMaxPassengersCapacity() {
-        const passengerPlanes = this.PassengerPlanes();
-        let planeWithMaxCapacity = passengerPlanes[0];
-        for (let i = 0; i < passengerPlanes.length; i++) {
-            if (passengerPlanes[i].PassengersCapacity() > planeWithMaxCapacity.PassengersCapacity()) {
-                planeWithMaxCapacity = passengerPlanes[i];
-            }
-        }
-        return planeWithMaxCapacity;
+
+        return this.planes.reduce((a, b) => (a.PassengersCapacity > b.PassengersCapacity ? a : b));
     }
 }
 

@@ -3,17 +3,12 @@ class Airport {
         this.planes = planes;
     }
 
-    getPlanes() {
+    get Planes() {
         return this.planes;
     }
 
-    getTypePlane(planes, type) {
-
-        return planes.filter((plane) => (plane.instanceOf(type)));
-    }
-
-    static sortByMaxProperty(property) {
-        return this.planes.sort((a, b) => (a[property] - b[property]));
+    sortByMaxProperty(property) {
+        return this.planes.sort((a, b) => (a[property] > b[property] ? 1 : -1));
     }
 
     static print(planes) {

@@ -1,6 +1,6 @@
 const MilitaryAirport = require('./airport/military-airport');
 const PassengerAirport = require('./airport/passenger-airport');
-const Planes = require('./initData/init-planes');
+const Planes = require('./initData/init-passenger-planes');
 
 (function run() {
     const militaryAirport = new MilitaryAirport(Planes);
