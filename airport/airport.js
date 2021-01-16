@@ -8,7 +8,7 @@ class Airport {
     }
 
     sortByMaxProperty(property) {
-        return this.planes.sort((a, b) => (a[property] > b[property] ? 1 : -1));
+        return this.planes.sort((a, b) => (a[property] - b[property]));
     }
 
     static print(planes) {
