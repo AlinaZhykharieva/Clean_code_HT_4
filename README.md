@@ -1,9 +1,9 @@
 # Clean_code_HT_4
-Installation
+Installation:
 npm install
 
-Run tests
+Run tests:
 mocha
 
-Start
+Start:
 node index.js
