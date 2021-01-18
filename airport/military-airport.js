@@ -1,9 +1,10 @@
 const Airport = require('./airport');
+const MilitaryPlanes = require('../initData/init-military-planes');
 const MilitaryType = require('../types/military-type');
 
 class MilitaryAirport extends Airport {
     constructor(planes) {
-        super(planes);
+        super(MilitaryPlanes);
     }
 
     get TransportMilitaryPlanes() {
