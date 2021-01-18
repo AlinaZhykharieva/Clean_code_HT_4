@@ -4,7 +4,7 @@ const ClassificationLevel = require('../types/classification-type');
 class experimentalPlanesValidator {
     validateThatAllExperimentalPlanesAreClassified(airport) {
         airport.Planes.forEach((plane) => {
-            expect(plane.classificationLevel).not.equal(ClassificationLevel.UNCLASSIFIED);
+            expect(plane.ClassificationLevel).not.equal(ClassificationLevel.UNCLASSIFIED);
         });
     }
 }
