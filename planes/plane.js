@@ -1,4 +1,4 @@
-class plane {
+class Plane {
     constructor(model, maxSpeed, maxFlightDistance, maxLoadCapacity) {
         this._model = model;
         this._maxSpeed = maxSpeed;
@@ -6,21 +6,21 @@ class plane {
         this._maxLoadCapacity = maxLoadCapacity;
     }
 
-    get Model() {
+    get model() {
         return this._model;
     }
 
-    get MaxSpeed() {
+    get maxSpeed() {
         return this._maxSpeed;
     }
 
-    get MaxFlightDistance() {
+    get maxFlightDistance() {
         return this._maxFlightDistance;
     }
 
-    get MaxLoadCapacity() {
+    get maxLoadCapacity() {
         return this._maxLoadCapacity;
     }
 }
 
-module.exports = plane;
+module.exports = Plane;

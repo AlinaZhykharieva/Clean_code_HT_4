@@ -1,14 +1,14 @@
 class Airport {
     constructor(planes) {
-        this.planes = planes;
+        this._planes = planes;
     }
 
-    get Planes() {
-        return this.planes;
+    get planes() {
+        return this._planes;
     }
 
     sortByMaxProperty(property) {
-        return this.planes.sort((a, b) => (a[property] - b[property]));
+        return this._planes.sort((a, b) => (a[property] - b[property]));
     }
 
     static print(planes) {

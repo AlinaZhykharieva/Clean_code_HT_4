@@ -23,7 +23,7 @@ describe('Test planes that located in airport', () => {
 
     it('Check that passenger plane has max capacity', () => {
         const airport = new PassengerAirport(PassengerPlanes);
-        expect(airport.PassengerPlaneWithMaxPassengersCapacity).to.deep.equal(planeWithMaxPassengerCapacity);
+        expect(airport.PassengerPlaneWithMaxPassengersCapacity).to.equal(planeWithMaxPassengerCapacity);
     });
 
     it('Check that planes sorted by max load capacity from low to height', () => {

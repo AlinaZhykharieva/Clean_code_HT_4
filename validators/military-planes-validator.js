@@ -1,18 +1,18 @@
 const { expect } = require('chai');
 const MilitaryType = require('../types/military-type');
 
-class militaryPlanesValidator {
+class MilitaryPlanesValidator {
     validateThatMilitaryPlanesHaveTransportType(airport) {
-        airport.TransportMilitaryPlanes.forEach((plane) => {
-            expect(plane.MilitaryType).to.deep.equal(MilitaryType.TRANSPORT);
+        airport.transportMilitaryPlanes.forEach((plane) => {
+            expect(plane.militaryType).to.deep.equal(MilitaryType.TRANSPORT);
         });
     }
 
     validateThatBomberTypeExist(airport) {
-        airport.BomberMilitaryPlanes.forEach((plane) => {
-            expect(plane.MilitaryType).to.deep.equal(MilitaryType.BOMBER);
+        airport.bomberMilitaryPlanes.forEach((plane) => {
+            expect(plane.militaryType).to.deep.equal(MilitaryType.BOMBER);
         });
     }
 }
 
-module.exports = militaryPlanesValidator;
+module.exports = MilitaryPlanesValidator;

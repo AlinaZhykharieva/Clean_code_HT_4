@@ -1,12 +1,12 @@
 const { expect } = require('chai');
 const ClassificationLevel = require('../types/classification-type');
 
-class experimentalPlanesValidator {
+class ExperimentalPlanesValidator {
     validateThatAllExperimentalPlanesAreClassified(airport) {
         airport.Planes.forEach((plane) => {
-            expect(plane.ClassificationLevel).not.equal(ClassificationLevel.UNCLASSIFIED);
+            expect(plane.classificationLevel).not.equal(ClassificationLevel.UNCLASSIFIED);
         });
     }
 }
 
-module.exports = experimentalPlanesValidator;
+module.exports = ExperimentalPlanesValidator;

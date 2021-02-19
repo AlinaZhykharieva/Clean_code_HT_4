@@ -4,11 +4,11 @@ const Planes = require('../initData/init-passenger-planes');
 
 const airport = new Airport(Planes);
 
-class passengerAirportValidators {
+class PassengerAirportValidators {
     validateSortingByMaxLoadCapacityFromLowToHeight() {
-        const sortedAirport = Planes.sort((a, b) => (a.MaxLoadCapacity - b.MaxLoadCapacity));
+        const sortedAirport = Planes.sort((a, b) => (a.maxLoadCapacity - b.maxLoadCapacity));
         expect(Array.from(airport.sortByMaxProperty('maxLoadCapacity'))).to.deep.equal(sortedAirport);
     }
 }
 
-module.exports = passengerAirportValidators;
+module.exports = PassengerAirportValidators;

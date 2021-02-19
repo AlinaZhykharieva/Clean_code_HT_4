@@ -6,7 +6,7 @@ class PassengerPlane extends Plane {
         this._passengersCapacity = passengersCapacity;
     }
 
-    get PassengersCapacity() {
+    get passengersCapacity() {
         return this._passengersCapacity;
     }
 }

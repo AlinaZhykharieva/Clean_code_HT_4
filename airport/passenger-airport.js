@@ -1,13 +1,12 @@
 const Airport = require('./airport');
-const PassengerPlanes = require('../initData/init-passenger-planes');
 
 class PassengerAirport extends Airport {
     constructor(planes) {
-        super(PassengerPlanes);
+        super(planes);
     }
 
-    get PassengerPlaneWithMaxPassengersCapacity() {
-        return this.planes.reduce((a, b) => (a.PassengersCapacity > b.PassengersCapacity ? a : b));
+    get passengerPlaneWithMaxPassengersCapacity() {
+        return this.planes.reduce((a, b) => (a.passengersCapacity > b.passengersCapacity ? a : b));
     }
 }
 
