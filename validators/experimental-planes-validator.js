@@ -3,7 +3,7 @@ const ClassificationLevel = require('../types/classification-type');
 
 class ExperimentalPlanesValidator {
     validateThatAllExperimentalPlanesAreClassified(airport) {
-        airport.Planes.forEach((plane) => {
+        airport.planes.forEach((plane) => {
             expect(plane.classificationLevel).not.equal(ClassificationLevel.UNCLASSIFIED);
         });
     }
