@@ -29,7 +29,7 @@ describe('Test planes that located in airport', () => {
     it('Check that planes sorted by max load capacity from low to height', () => {
         const airport = new PassengerAirport(PassengerPlanes);
         airport.sortByMaxProperty('maxLoadCapacity');
-        passengerPlanesValidator.validateSortingByMaxLoadCapacityFromLowToHeight(airport);
+        passengerPlanesValidator.validateSortingByMaxLoadCapacityByAscending(airport);
     });
 
     it('Check that military planes have at least one bomber in military planes', () => {
