@@ -7,11 +7,11 @@ const MilitaryAirport = require('../airport/military-airport');
 const PassengerAirport = require('../airport/passenger-airport');
 const ExperimentalAirport = require('../airport/experimental-airport');
 const MilitaryPlanesValidator = require('../validators/military-planes-validator');
-const AirportValidator = require('../validators/passenger-airport-validators');
+const PassengerAirportValidator = require('../validators/passenger-airport-validators');
 const ExperimentalPlanesValidator = require('../validators/experimental-planes-validator');
 
 describe('Test planes that located in airport', () => {
-    const passengerPlanesValidator = new AirportValidator();
+    const passengerPlanesValidator = new PassengerAirportValidator();
     const militaryPlanesValidator = new MilitaryPlanesValidator();
     const experimentalPlanesValidator = new ExperimentalPlanesValidator();
     const planeWithMaxPassengerCapacity = new PassengerPlane('Boeing-747', 980, 16100, 70500, 242);
